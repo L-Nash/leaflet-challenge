@@ -28,7 +28,7 @@ function formatMarkers (feature, latlng) {
         color: "#006d2c",
         weight: 1,
         opacity: 1,
-        fillOpacity: 
+        fillOpacity: .8
             }).bindPopup(`<h3>${feature.properties.place}</h3> <hr> <h3>Magnitude: ${feature.properties.mag} </h3> <h3>Depth: ${feature.geometry.coordinates[2]}</h3>`);
         };
 
@@ -44,31 +44,16 @@ function setColor(depth) {
     else if (depth > 10) return "#fed976";
     else return "#ffffb2";
 };
-//add popups
-// function popUpWording(place) {
-//     return (`<h1>${feature.properties.place}</h1> <hr> <h3>Population ${feature.properties.place}</h3>`)
 
-// .bindPopup(`<h3>Population ${feature.properties.mag}</h3> <hr> <h3>Magnitude</h3>, <h3>depth</h3>`)
-// }
-// for (var i = 0; i < feature.length; i++) {
-// plot.bindPopup(`<h1>${feature[i].properties.place}</h1> <hr> <h3>Population ${feature[i].properties.place}</h3>`);
 // // add legend
-
 var legend = L.control({ position: "bottomright" });
 
-// function getColor(d) {
-//     return d > 90 ? '#800026' :
-//            d > 70  ? '#E31A1C' :
-//            d > 50  ? '#FC4E2A' :
-//            d > 30   ? '#FD8D3C' :
-//            d > 10   ? '#FEB24C' :
-//                         '#FED976';
-// };
+
 
 legend.onAdd = function(QuakeMap) {
     var div = L.DomUtil.create("div", "info legend");
     var limits = [0, 10, 30, 50, 70, 90]
-    // var colors = ["#edf8fb", "#b2e2e2", "#99d8c9", "#66c2a4", "#2ca25f", "#006d2c"];
+    
     var labels = [];
 
     var legendInfo = "<h1>Earthquake Depth</h1>" 
